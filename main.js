@@ -1,3 +1,42 @@
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8
+  });
+}
+
+$.ajax({
+  method: "GET",
+  url: "https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
+  async: true,
+  dataType: "json",
+  success: function (json) {
+    console.log(json);
+    // Parse the response.
+    // Do other things.
+  },
+  error: function (xhr, status, err) {
+    console.error(err);
+  }
+});
+$.ajax({
+  method: "GET",
+  url: 'https://api.openweathermap.org/data/2.5/forecast?zip=92870,us&appid=d8c2bb12af67678ecbbb1c4e8977df25',
+  async: true,
+  dataType: "json",
+  success: function (json) {
+    console.log(json);
+    // Parse the response.
+    // Do other things.
+  },
+  error: function (xhr, status, err) {
+    console.error(err);
+  }
+});
+
+$('form').serializeArray();
+
 var submitButton = document.getElementById('submitButton');
 var events = {
   formValidation() {
@@ -21,10 +60,3 @@ var events = {
   }
 }
 events.submitEvent();
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8
-  });
-}
