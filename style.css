@@ -1,0 +1,16 @@
+#map {
+    height: 100%;
+  }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+#form{
+  z-index: 10;
+  margin: 10px;
+  line-height: 30px;
+}
+button {
+  border-radius: 5px;
+}
