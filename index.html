@@ -7,8 +7,28 @@
   <title>Document</title>
 </head>
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <div id="map"></div>
+
+  <form id="form">
+    <label for="zip">Zip Code: </label>
+    <input type="text" id="zipCode" placeholder="Zip Code">
+    <br>
+    <label for="venue">Venue: </label>
+    <input type="text" id="venue" placeholder="Venue">
+    <br>
+    <label for="dates">Dates: </label>
+    <input type="text" id="dates" placeholder="Dates">
+    <br>
+    <button id="buttonSubmit">Submit</button>
+    <button id="buttonReset">Reset</button>
+    <br>
+    <label for="weather">Weather Forecast: </label>
+    <div id="weatherOutput"></div>
+  </form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" 
+     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI&callback=initMap"></script>
   <script src="main.js"></script>
 </body>
 </html>
