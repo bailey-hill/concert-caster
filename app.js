@@ -29,6 +29,7 @@ class App {
       var weatherElement = document.createElement("p");
       var temp = data.list[i].main.temp;
       weatherElement.textContent = temp;
+
       // console.log("Temperature:", temp);
       weatherOutput.append(weatherElement);
 
@@ -43,7 +44,7 @@ class App {
   getWeather(zipCode) {
     $.ajax({
       type: "GET",
-      url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&appid=d8c2bb12af67678ecbbb1c4e8977df25",
+      url: "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25&cnt=5",
       async: true,
       dataType: "json",
       success: this.handleGetWeatherSuccess,
