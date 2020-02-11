@@ -26,7 +26,7 @@ function getWeather(zipCode) {
   console.log(zipCode);
   $.ajax({
     type: "GET",
-    url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&appid=d8c2bb12af67678ecbbb1c4e8977df25",
+    url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25",
     async: true,
     dataType: "json",
     success: function (data) {
