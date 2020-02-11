@@ -1,5 +1,5 @@
 class App {
-  constructor(zipCode) {
+  constructor(zipCode, venueText) {
     this.handleGetWeatherSuccess = this.handleGetWeatherSuccess.bind(this)
     this.handleGetWeatherError = this.handleGetWeatherError.bind(this)
     this.handleGetLocationSuccess = this.handleGetLocationSuccess.bind(this)
@@ -13,17 +13,24 @@ class App {
     var weatherForecast = "";
     var weatherElement = document.createElement("p");
 
-    $.each(data.list, function (index, val) {
-      weatherForecast += val.main.temp;
-    })
+    for (var i = 0; i < data.list.length; i++) {
+      var weatherElement = document.createElement("p");
+      var temp = data.list[i].main.temp;
+      weatherElement.textContent = temp;
+
+    // $.each(data.list, function (index, val) {
+    //   weatherForecast += val.main.temp;
+    // })
 
     weatherElement.textContent = weatherForecast;
     weatherOutput.append(weatherElement);
+
+    }
   }
   getWeather(zipCode) {
     $.ajax({
       type: "GET",
-      url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&appid=d8c2bb12af67678ecbbb1c4e8977df25",
+      url: "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25&cnt=5",
       async: true,
       dataType: "json",
       success: this.handleGetWeatherSuccess,
