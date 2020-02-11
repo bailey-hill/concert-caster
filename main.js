@@ -36,7 +36,7 @@ function getWeather(zipCode) {
       var weatherElement = document.createElement("p");
       $.each(data.list, function (index, val) {
         weatherForecast += val.main.temp;
-      })
+      });
       weatherElement.textContent = weatherForecast;
       weatherOutput.append(weatherElement);
     },
