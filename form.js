@@ -13,6 +13,7 @@ class SearchForm {
     this.getLocation = getLocation;
   }
   formValidation(event) {
+    console.log(this)
     event.preventDefault();
     var zipCode = this.zipCodeInput.value;
     console.log("ZipCode:", zipCode);

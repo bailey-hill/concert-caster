@@ -1,6 +1,7 @@
 var submitButton = document.getElementById('buttonSubmit');
 var resetButton = document.getElementById('buttonReset');
 var zipCodeInput = document.getElementById('zipCode');
+console.log(zipCodeInput)
 // var cityInput = document.getElementById('cityInput').textContent;
 var venueInput = document.getElementById('venue');
 
@@ -8,8 +9,11 @@ var map;
 var coord;
 
 var formInfo = new SearchForm(submitButton, zipCodeInput);
-var app = new App(formInfo, zipCodeInput, coord);
-console.log("App.coord:", app.coord);
+
+//dynamically create a script element
+// append it to
+
+
 
 function initMap(coord) {
   console.log(coord);
@@ -20,7 +24,9 @@ function initMap(coord) {
     zoom: 10
   });
 }
-var formInfo = new SearchForm(submitButton);
+
+var app = new App(formInfo, zipCodeInput, initMap);
+
 
 
 function getWeather(zipCode) {
