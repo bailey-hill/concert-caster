@@ -6,18 +6,20 @@ var venueInput = document.getElementById('venue');
 
 var map;
 var coord;
-console.log(coord);
+
+var formInfo = new SearchForm(submitButton, zipCodeInput);
+var app = new App(formInfo, zipCodeInput, coord);
+console.log("App.coord:", app.coord);
 
 function initMap(coord) {
   console.log(coord);
 
   //Instantiate new Map object (class is from Google)
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 33.9098939, lng: -117.81626},
+    center: app.newCoord,
     zoom: 10
   });
 }
-
 var formInfo = new SearchForm(submitButton);
 
 
