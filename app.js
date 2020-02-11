@@ -22,29 +22,44 @@ class App {
     console.error(error)
   }
   handleGetWeatherSuccess(data) {
-    var weatherOutput = document.getElementById("weatherOutput");
+    console.log(data)
+    var temperatureOutput = document.getElementById("temperatureRow");
     var weatherForecast = "";
-    var weatherElement = document.createElement("p");
+    var weatherRow = document.getElementById("weatherRow");
+    var dateRow = document.getElementById("dateRow");
 
-    for (var i = 0; i < data.list.length; i++) {
-      var weatherElement = document.createElement("p");
+    for (var i = 0; i < data.list.length; i += 8) {
+
+      var tempTd = document.createElement("td");
       var temp = data.list[i].main.temp;
-      weatherElement.textContent = temp;
 
-      // console.log("Temperature:", temp);
-      weatherOutput.append(weatherElement);
 
-      $.each(data.list, function (index, val) {
-      weatherForecast += val.main.temp;
-      })
+      var mainTest = data.list[i].weather[0].main;
 
-      weatherElement.textContent = weatherForecast;
-      weatherOutput.append(weatherElement);
+
+      var dateInfo = data.list[i].dt_txt.slice(0, 10);
+
+
+      var mainTd = document.createElement("td");
+      mainTd.textContent = mainTest;
+      console.log(mainTest);
+
+
+      var dateTd = document.createElement("th");
+      dateTd.textContent = dateInfo;
+      console.log(dateInfo);
+
+      tempTd.textContent = temp + "°F";
+      console.log(temp);
+
+      temperatureRow.append(tempTd);
+      weatherRow.append(mainTd);
+      dateRow.append(dateTd);
     }
   }
   getWeather(zipCode) {
     $.ajax({
-      url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25&cnt=5",
+      url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25",
       success: this.handleGetWeatherSuccess,
       error: this.handleGetWeatherError
     })
