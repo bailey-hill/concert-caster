@@ -26,15 +26,16 @@ function getWeather(zipCode) {
     async: true,
     dataType: "json",
     success: function (data) {
-      var weatherOutput = document.getElementById("weatherOutput");
-      var weatherForecast = "";
-      for (var i = 0; i < data.list.length; i++) {
-        var weatherElement = document.createElement("p");
-        var temp = data.list[i].main.temp;
-        weatherElement.textContent = temp;
-        console.log(temp);
-        weatherOutput.append(weatherElement);
-      }
+      console.log(data);
+      // var weatherOutput = document.getElementById("weatherOutput");
+      // var weatherForecast = "";
+      // for (var i = 0; i < data.list.length; i++) {
+      //   var weatherElement = document.createElement("p");
+      //   var temp = data.list[i].main.temp;
+      //   weatherElement.textContent = temp;
+      //   console.log(temp);
+      //   weatherOutput.append(weatherElement);
+      // }
       // $.each(data.list, function (key, value) {
       // weatherForecast += value.main.temp;
       // })
