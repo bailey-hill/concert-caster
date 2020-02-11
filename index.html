@@ -9,7 +9,9 @@
 </head>
 <body>
   <div class="container">
+
     <form id="form">
+      <h2>Event Caster</h2>
       <label for="zip"></label>
       <input type="text" id="zipCode" placeholder="Zip Code">
       <br>
@@ -19,12 +21,14 @@
       <label for="dates"></label>
       <input type="date" id="dates" placeholder="Dates">
       <br>
+      <div class="buttonRow">
       <button id="buttonSubmit">Submit</button>
       <button id="buttonReset">Reset</button>
+      </div>
       <br>
     </form>
     <div id="map"></div>
-    
+
   </div>
   <table>
     <label for="weather">Weather Forecast: </label>
@@ -38,7 +42,7 @@
     </tbody>
   </table>
   <footer>&copy; Bailey, Cindy, Jasmine & Jack</footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI&callback=initMap"></script>
   <script src="main.js"></script>
