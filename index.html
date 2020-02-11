@@ -3,28 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Maps, Events, Weather</title>
 </head>
 <body>
-  <div id="map"></div>
-
-  <form id="form">
-    <label for="zip">Zip Code: </label>
-    <input type="text" id="zipCode" placeholder="Zip Code">
-    <br>
-    <label for="venue">Venue: </label>
-    <input type="text" id="venue" placeholder="Venue">
-    <br>
-    <label for="dates">Dates: </label>
-    <input type="text" id="dates" placeholder="Dates">
-    <br>
-    <button id="buttonSubmit">Submit</button>
-    <button id="buttonReset">Reset</button>
-    <br>
+  <div class="container">
+    <form id="form">
+      <h2>Event Caster</h2>
+      <label for="zip"></label>
+      <input type="text" id="zipCode" placeholder="Zip Code">
+      <br>
+      <label for="venue"></label>
+      <input type="text" id="venue" placeholder="Venue">
+      <br>
+      <label for="dates"></label>
+      <input type="date" id="dates" placeholder="Dates">
+      <br>
+      <div class="buttonRow">
+      <button id="buttonSubmit">Submit</button>
+      <button id="buttonReset">Reset</button>
+      </div>
+      <br>
+    </form>
+    <div id="map"></div>
+  </div>
+  <table>
     <label for="weather">Weather Forecast: </label>
     <div id="weatherOutput"></div>
-  </form>
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <footer>&copy; Bailey, Cindy, Jasmine & Jack</footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI&callback=initMap"></script>
