@@ -1,8 +1,9 @@
 class App {
-  constructor(formInfo, zipCodeInput, coord) {
+  constructor(formInfo, zipCodeInput, initMap) {
     this.formInfo = formInfo
     this.zipCodeInput = zipCodeInput
-    this.coord = null
+    this.initMap = initMap
+    this.coord = null;
     this.handleGetEventSuccess = this.handleGetEventSuccess.bind(this)
     this.handleGetEventError = this.handleGetEventError.bind(this)
     this.getWeather = this.getWeather.bind(this)
@@ -43,10 +44,7 @@ class App {
   }
   getWeather(zipCode) {
     $.ajax({
-      type: "GET",
-      url: "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25&cnt=5",
-      async: true,
-      dataType: "json",
+      url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25&cnt=5",
       success: this.handleGetWeatherSuccess,
       error: this.handleGetWeatherError
     })
@@ -65,7 +63,7 @@ class App {
     this.coord = data.results[0].geometry.location;
 
     console.log("getLocationSuccess:", this.coord);
-
+    this.initMap(this.coord)
 
     // this.redefineCoordProperty(this.coord);
 
