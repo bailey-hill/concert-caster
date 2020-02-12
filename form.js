@@ -4,14 +4,15 @@ class SearchForm {
     this.getLocation = null;
     this.ticketmasterEvent = null;
     this.zipCodeInput = zipCodeInput
-    this.tieWeatherAndLocation = this.tieWeatherAndLocation.bind(this)
+    this.tieAPIs = this.tieAPIs.bind(this)
     this.formValidation = this.formValidation.bind(this)
     this.submitButton = submitButton;
     this.submitButton.addEventListener('click', this.formValidation)
   }
-  tieWeatherAndLocation(getWeather, getLocation) {
+  tieAPIs(getWeather, getLocation, ticketmasterEvent) {
     this.getWeather = getWeather;
     this.getLocation = getLocation;
+    this.ticketmasterEvent = ticketmasterEvent;
   }
   formValidation(event) {
     console.log(this)
@@ -25,10 +26,8 @@ class SearchForm {
 
     this.getLocation(zipCode);
     this.getWeather(zipCode);
-    // this.ticketmasterEvent(zipCode);
+    this.ticketmasterEvent(zipCode);
     console.log("Return Zip:", zipCode);
-    // initMap(coord)
     return zipCode;
-
   }
 }
