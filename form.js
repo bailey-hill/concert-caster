@@ -23,6 +23,5 @@ class SearchForm {
     this.ticketmasterEvent(zipCode);
     console.log("Return Zip:", zipCode);
     return zipCode;
-
   }
 }

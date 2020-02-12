@@ -3,6 +3,7 @@ class App {
     this.formInfo = formInfo
     this.zipCodeInput = zipCodeInput
     this.coord = null;
+    this.startMap = this.startMap.bind(this);
     this.initMap = this.initMap.bind(this);
     this.handleGetEventSuccess = this.handleGetEventSuccess.bind(this)
     this.handleGetEventError = this.handleGetEventError.bind(this)
@@ -52,12 +53,9 @@ class App {
   handleGetLocationSuccess(data) {
     this.coord = data.results[0].geometry.location;
     // setTimeout(() => {
-    //   var script = document.createElement('script');
-    //   script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI');
-    //   document.querySelector('body').appendChild(script);
-      
     // }, 1000);
     this.initMap(this.coord);
+    console.log(this.coord);
     return this.coord;
   }
   getLocation(zipCode) {
@@ -72,39 +70,49 @@ class App {
   initMap(coord) {
     map = new google.maps.Map(document.getElementById('map'), {
       center: coord,
-      zoom: 10
+      zoom: 13
     });
   }
-  handleGetEventError(error){
-      console.log(error)
+  handleGetEventError(error) {
+    console.log(error)
   }
-  handleGetEventSuccess(data){
+  handleGetEventSuccess(data) {
     console.log(data)
     var concertBody = document.getElementById("concertBody");
     var weatherForecast = "";
     for (var i = 0; i < data._embedded.events.length; i++) {
-    var newConcertRow = document.createElement("tr");
-    var datesTd = document.createElement("td");
-    var dates = data._embedded.events[i].dates.start.localDate;
-    var artistsTd = document.createElement("td");
-    var artists = data._embedded.events[i].name;
-    var venueTd = document.createElement("td");
-    var venue = data._embedded.events[i]._embedded.venues[0].name;
-    datesTd.textContent = dates;
-    artistsTd.textContent = artists;
-    venueTd.textContent = venue;
-    newConcertRow.append(datesTd);
-    newConcertRow.append(artistsTd);
-    newConcertRow.append(venueTd);
-    concertBody.append(newConcertRow);
+      var newConcertRow = document.createElement("tr");
+      var datesTd = document.createElement("td");
+      var dates = data._embedded.events[i].dates.start.localDate;
+      var artistsTd = document.createElement("td");
+      var artists = data._embedded.events[i].name;
+      var venueTd = document.createElement("td");
+      var venue = data._embedded.events[i]._embedded.venues[0].name;
+      datesTd.textContent = dates;
+      artistsTd.textContent = artists;
+      venueTd.textContent = venue;
+      newConcertRow.append(datesTd);
+      newConcertRow.append(artistsTd);
+      newConcertRow.append(venueTd);
+      concertBody.append(newConcertRow);
+    }
   }
-}
   ticketmasterEvent(zipCode) {
     $.ajax({
       type: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode.value + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
       success: this.handleGetEventSuccess,
       error: this.handleGetEventError
     })
+  }
+  startMap() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI');
+    document.querySelector('body').appendChild(script);
+    navigator.geolocation.getCurrentPosition((coord) => {
+      var coords = {lat: coord.coords.latitude, lng: coord.coords.longitude}
+      this.initMap(coords);
+    });
   }
 }
