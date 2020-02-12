@@ -18,13 +18,12 @@ class SearchForm {
     event.preventDefault();
     var zipCode = this.zipCodeInput;
     if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipCode.value)) {
-     zipCode.vaue = zipCode.value 
      this.getLocation(zipCode.value);
      this.getWeather(zipCode.value);
      this.ticketmasterEvent(zipCode.value);
     } else {
       zipCode.value = '';
       zipCode.setAttribute('placeholder', 'Please enter a valid zip code');
-    } //RegEx Zipcode test, returns boolean;
+    }
   }
 }
