@@ -25,8 +25,13 @@ class App {
     var weatherForecast = "";
     var weatherRow = document.getElementById("weatherRow");
     var dateRow = document.getElementById("dateRow");
+    var weatherH2 = document.getElementById("weatherH2");
+    var H2 = document.createElement("h2");
 
+    H2.textContent = "Weather Forecast";
+    weatherH2.append(H2);
     for (var i = 0; i < data.list.length; i += 8) {
+
       var tempTd = document.createElement("td");
       var temp = data.list[i].main.temp;
       var mainTest = data.list[i].weather[0].main;
