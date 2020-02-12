@@ -69,6 +69,12 @@ button {
   border: 0;
 }
 
+footer {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 

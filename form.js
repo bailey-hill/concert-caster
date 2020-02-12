@@ -21,7 +21,6 @@ class SearchForm {
     this.getLocation(zipCode.value);
     this.getWeather(zipCode.value);
     this.ticketmasterEvent(zipCode);
-    console.log("Return Zip:", zipCode);
     return zipCode;
   }
 }

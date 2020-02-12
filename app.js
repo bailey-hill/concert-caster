@@ -20,12 +20,12 @@ class App {
     console.error(error)
   }
   handleGetWeatherSuccess(data) {
-    var temperatureOutput = document.getElementById("temperatureRow");
-    var weatherForecast = "";
+    var temperatureRow = document.getElementById("temperatureRow");
     var weatherRow = document.getElementById("weatherRow");
     var dateRow = document.getElementById("dateRow");
     var H2 = document.getElementById("weatherHeader");
     H2.classList.remove("hidden");
+    $('#weatherTable tr').empty()
     for (var i = 0; i < data.list.length; i += 8) {
       var tempTd = document.createElement("td");
       var temp = data.list[i].main.temp;
@@ -53,10 +53,7 @@ class App {
   }
   handleGetLocationSuccess(data) {
     this.coord = data.results[0].geometry.location;
-    // setTimeout(() => {
-    // }, 1000);
     this.initMap(this.coord);
-    console.log(this.coord);
     return this.coord;
   }
   getLocation(zipCode) {
@@ -78,11 +75,12 @@ class App {
     console.log(error)
   }
   handleGetEventSuccess(data) {
-    console.log(data)
-    var concertBody = document.getElementById("concertBody");
-    var weatherForecast = "";
     var concertH2 = document.getElementById("concertHeader");
     concertH2.classList.remove("hidden");
+    var concertBody = document.getElementById("concertBody");
+    while (concertBody.firstChild) {
+      concertBody.removeChild(concertBody.firstChild);
+    }
     var concertRowHeader = document.createElement("tr");
     var concertDate = document.createElement("th");
     var concertEvent = document.createElement("th");
@@ -94,21 +92,25 @@ class App {
     concertRowHeader.append(concertEvent);
     concertRowHeader.append(concertVenue);
     concertBody.append(concertRowHeader);
-    for (var i = 0; i < data._embedded.events.length; i++) {
-      var newConcertRow = document.createElement("tr");
-      var datesTd = document.createElement("td");
-      var dates = data._embedded.events[i].dates.start.localDate.slice(5, 10);
-      var artistsTd = document.createElement("td");
-      var artists = data._embedded.events[i].name;
-      var venueTd = document.createElement("td");
-      var venue = data._embedded.events[i]._embedded.venues[0].name;
-      datesTd.textContent = dates;
-      artistsTd.textContent = artists;
-      venueTd.textContent = venue;
-      newConcertRow.append(datesTd);
-      newConcertRow.append(artistsTd);
-      newConcertRow.append(venueTd);
-      concertBody.append(newConcertRow);
+    if (!data._embedded) {
+      document.getElementById('noEventText').classList.remove('hidden');
+    } else {
+      for (var i = 0; i < data._embedded.events.length; i++) {
+        var newConcertRow = document.createElement("tr");
+        var datesTd = document.createElement("td");
+        var dates = data._embedded.events[i].dates.start.localDate.slice(5, 10);
+        var artistsTd = document.createElement("td");
+        var artists = data._embedded.events[i].name;
+        var venueTd = document.createElement("td");
+        var venue = data._embedded.events[i]._embedded.venues[0].name;
+        datesTd.textContent = dates;
+        artistsTd.textContent = artists;
+        venueTd.textContent = venue;
+        newConcertRow.append(datesTd);
+        newConcertRow.append(artistsTd);
+        newConcertRow.append(venueTd);
+        concertBody.append(newConcertRow);
+      }
     }
   }
   ticketmasterEvent(zipCode) {
@@ -125,7 +127,7 @@ class App {
     script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI');
     document.querySelector('body').appendChild(script);
     navigator.geolocation.getCurrentPosition((coord) => {
-      var coords = {lat: coord.coords.latitude, lng: coord.coords.longitude}
+      var coords = { lat: coord.coords.latitude, lng: coord.coords.longitude }
       this.initMap(coords);
     });
   }
