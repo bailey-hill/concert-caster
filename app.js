@@ -110,13 +110,14 @@ class App {
         newConcertRow.append(artistsTd);
         newConcertRow.append(venueTd);
         concertBody.append(newConcertRow);
+        document.getElementById('noEventText').classList.add('hidden');
       }
     }
   }
   ticketmasterEvent(zipCode) {
     $.ajax({
       type: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode.value + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
+      url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
       success: this.handleGetEventSuccess,
       error: this.handleGetEventError
     })
