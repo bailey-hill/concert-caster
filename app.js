@@ -66,13 +66,13 @@ class App {
     })
   }
   initMap(coord) {
-    map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementById('map'), {
       center: coord,
       zoom: 13
     });
   }
   handleGetEventError(error) {
-    console.log(error)
+    console.error(error)
   }
   handleGetEventSuccess(data) {
     var concertH2 = document.getElementById("concertHeader");
@@ -124,7 +124,6 @@ class App {
   }
   startMap() {
     var script = document.createElement('script');
-    script.async = true;
     script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI');
     document.querySelector('body').appendChild(script);
     navigator.geolocation.getCurrentPosition((coord) => {

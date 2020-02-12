@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Concert Caster</title>
 </head>
+
 <body>
   <div class="container">
     <div class="formCol">
       <form id="form">
         <h2>Concert Caster</h2>
         <label for="zip"></label>
-        <input type="text" id="zipCode" placeholder="Zip Code">
+        <input name="zip" type="text" inputmode="numeric" id="zipCode" placeholder="Zip Code">
         <br>
         <div class="buttonRow">
           <button id="buttonSubmit">Submit</button>
@@ -24,9 +25,8 @@
         </div>
         <br>
       </form>
-      <h2 for="concert" id="concertHeader" class="concertHeader hidden">Fairs and Festivals</h2>
+      <h2 for="fairs and festivals" id="concertHeader" class="concertHeader hidden">Fairs and Festivals</h2>
       <table id="concertTable" class="table table-dark table-sm table-bordered">
-        <!-- <div id="weatherOutput"></div> -->
         <thead>
           <tr id="concertDatesRow">
           </tr>
@@ -62,4 +62,5 @@
   <script src="app.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>
