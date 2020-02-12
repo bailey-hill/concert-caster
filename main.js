@@ -1,31 +1,12 @@
 var submitButton = document.getElementById('buttonSubmit');
 var resetButton = document.getElementById('buttonReset');
 var zipCodeInput = document.getElementById('zipCode');
-console.log(zipCodeInput)
 // var cityInput = document.getElementById('cityInput').textContent;
 var venueInput = document.getElementById('venue');
 
-var map;
-var coord;
-
 var formInfo = new SearchForm(submitButton, zipCodeInput);
 
-//dynamically create a script element
-// append it to
-
-
-
-function initMap(coord) {
-  console.log(coord);
-
-  //Instantiate new Map object (class is from Google)
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: app.newCoord,
-    zoom: 10
-  });
-}
-
-var app = new App(formInfo, zipCodeInput, initMap);
+var app = new App(formInfo, zipCodeInput);
 
 
 
@@ -87,7 +68,7 @@ function ticketmasterEvent(zipCode) {
     type: "GET",
     url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
     success: function (data) {
-      console.log(data)
+      // console.log(data)
 
     },
     error: function (error) {
