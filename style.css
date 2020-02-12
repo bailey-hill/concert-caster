@@ -2,10 +2,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  background-image: linear-gradient(to right, #22c1c3, #fdbb2d);
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   font-family: 'Livvic', sans-serif;
   font-size: 1.1rem;
 }
