@@ -125,3 +125,7 @@ button {
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
+
+.hidden {
+  display: none;
+}

@@ -24,12 +24,13 @@ class App {
     var weatherForecast = "";
     var weatherRow = document.getElementById("weatherRow");
     var dateRow = document.getElementById("dateRow");
-
+    var H2 = document.getElementById("weatherHeader");
+    H2.classList.remove("hidden");
     for (var i = 0; i < data.list.length; i += 8) {
       var tempTd = document.createElement("td");
       var temp = data.list[i].main.temp;
       var mainTest = data.list[i].weather[0].main;
-      var dateInfo = data.list[i].dt_txt.slice(0, 10);
+      var dateInfo = data.list[i].dt_txt.slice(5, 10);
       var mainTd = document.createElement("td");
       mainTd.textContent = mainTest;
       var dateTd = document.createElement("th");
@@ -80,10 +81,23 @@ class App {
     console.log(data)
     var concertBody = document.getElementById("concertBody");
     var weatherForecast = "";
+    var concertH2 = document.getElementById("concertHeader");
+    concertH2.classList.remove("hidden");
+    var concertRowHeader = document.createElement("tr");
+    var concertDate = document.createElement("th");
+    var concertEvent = document.createElement("th");
+    var concertVenue = document.createElement("th");
+    concertDate.textContent = "Date";
+    concertEvent.textContent = "Performer";
+    concertVenue.textContent = "Venue";
+    concertRowHeader.append(concertDate);
+    concertRowHeader.append(concertEvent);
+    concertRowHeader.append(concertVenue);
+    concertBody.append(concertRowHeader);
     for (var i = 0; i < data._embedded.events.length; i++) {
       var newConcertRow = document.createElement("tr");
       var datesTd = document.createElement("td");
-      var dates = data._embedded.events[i].dates.start.localDate;
+      var dates = data._embedded.events[i].dates.start.localDate.slice(5, 10);
       var artistsTd = document.createElement("td");
       var artists = data._embedded.events[i].name;
       var venueTd = document.createElement("td");
