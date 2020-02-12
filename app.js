@@ -1,9 +1,9 @@
 class App {
-  constructor(formInfo, zipCodeInput, initMap) {
+  constructor(formInfo, zipCodeInput) {
     this.formInfo = formInfo
     this.zipCodeInput = zipCodeInput
-    this.initMap = initMap
     this.coord = null;
+    this.initMap = this.initMap.bind(this);
     this.handleGetEventSuccess = this.handleGetEventSuccess.bind(this)
     this.handleGetEventError = this.handleGetEventError.bind(this)
     this.getWeather = this.getWeather.bind(this)
@@ -14,13 +14,11 @@ class App {
     this.handleGetLocationSuccess = this.handleGetLocationSuccess.bind(this)
     this.ticketmasterEvent = this.ticketmasterEvent.bind(this)
     this.formInfo.tieAPIs(this.getWeather, this.getLocation, this.ticketmasterEvent)
-
   }
   handleGetWeatherError(error) {
     console.error(error)
   }
   handleGetWeatherSuccess(data) {
-    console.log(data)
     var temperatureOutput = document.getElementById("temperatureRow");
     var weatherForecast = "";
     var weatherRow = document.getElementById("weatherRow");
@@ -33,12 +31,9 @@ class App {
       var dateInfo = data.list[i].dt_txt.slice(0, 10);
       var mainTd = document.createElement("td");
       mainTd.textContent = mainTest;
-      console.log(mainTest);
       var dateTd = document.createElement("th");
       dateTd.textContent = dateInfo;
-      console.log(dateInfo);
       tempTd.textContent = temp + "°F";
-      console.log(temp);
       temperatureRow.append(tempTd);
       weatherRow.append(mainTd);
       dateRow.append(dateTd);
@@ -55,21 +50,30 @@ class App {
     console.error(error)
   }
   handleGetLocationSuccess(data) {
-    console.log(data)
     this.coord = data.results[0].geometry.location;
-
-    console.log("getLocationSuccess:", this.coord);
-    this.initMap(this.coord)
+    // setTimeout(() => {
+    //   var script = document.createElement('script');
+    //   script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI');
+    //   document.querySelector('body').appendChild(script);
+      
+    // }, 1000);
+    this.initMap(this.coord);
     return this.coord;
   }
   getLocation(zipCode) {
     $.ajax({
       type: "GET",
-      url: "https://maps.googleapis.com/maps/api/geocode/json?components=" + zipCode + "|country:US&key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI",
+      url: "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + zipCode + "|country:US&key=AIzaSyD2apacQ6gjcKfQNOxYiJyKi2gGs5911CI",
       async: true,
       success: this.handleGetLocationSuccess,
       error: this.handleGetLocationError
     })
+  }
+  initMap(coord) {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: coord,
+      zoom: 10
+    });
   }
   handleGetEventError(error){
       console.log(error)
