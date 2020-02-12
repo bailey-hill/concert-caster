@@ -2,6 +2,7 @@ class SearchForm {
   constructor(submitButton, zipCodeInput) {
     this.getWeather = null;
     this.getLocation = null;
+    this.ticketmasterEvent = null;
     this.zipCodeInput = zipCodeInput
     this.tieWeatherAndLocation = this.tieWeatherAndLocation.bind(this)
     this.formValidation = this.formValidation.bind(this)
@@ -24,6 +25,7 @@ class SearchForm {
 
     this.getLocation(zipCode);
     this.getWeather(zipCode);
+    // this.ticketmasterEvent(zipCode);
     console.log("Return Zip:", zipCode);
     // initMap(coord)
     return zipCode;

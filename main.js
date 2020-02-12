@@ -88,7 +88,24 @@ function ticketmasterEvent(zipCode) {
     url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
     success: function (data) {
       console.log(data)
-
+      var concertDatesRow = document.getElementById("concertDatesRow");
+      var concertRow = document.getElementById("concertRow");
+      var venueRow = document.getElementById("venueRow");
+      var weatherForecast = "";
+      for (var i = 0; i < data._embedded.events.length; i++) {
+        var datesTd = document.createElement("td");
+        var dates = data._embedded.events[i].dates.start.localDate;
+        var artistsTd = document.createElement("td");
+        var artists = data._embedded.events[i].name;
+        var venueTd = document.createElement("td");
+        var venue = data._embedded.events[i]._embedded.venues[0].name;
+        datesTd.textContent = dates;
+        artistsTd.textContent = artists;
+        venueTd.textContent = venue;
+        concertDatesRow.append(datesTd);
+        concertRow.append(artistsTd);
+        venueRow.append(venueTd);
+      }
     },
     error: function (error) {
       console.error(error)
