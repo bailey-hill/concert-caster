@@ -80,7 +80,6 @@ class App {
   }
   handleGetEventSuccess(data){
     console.log(data)
-    console.log(data)
     var concertBody = document.getElementById("concertBody");
     var weatherForecast = "";
     for (var i = 0; i < data._embedded.events.length; i++) {
