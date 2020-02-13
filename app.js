@@ -75,12 +75,24 @@ class App {
     console.error(error)
   }
   handleGetEventSuccess(data) {
+    var dataArray = data._embedded.events;
+    var sortedArray;
     var concertH2 = document.getElementById("concertHeader");
     concertH2.classList.remove("hidden");
     var concertBody = document.getElementById("concertBody");
     while (concertBody.firstChild) {
       concertBody.removeChild(concertBody.firstChild);
     }
+    for (var i = 0; i < dataArray.length; i++) {
+      var object = data._embedded.events[i];
+    }
+    sortedArray = dataArray.sort(function (object1, object2) {
+      if (object1.dates.start.localDate > object2.dates.start.localDate) {
+        return 1
+      } else {
+        return -1;
+      }
+    });
     var concertRowHeader = document.createElement("tr");
     var concertDate = document.createElement("th");
     var concertEvent = document.createElement("th");
@@ -95,7 +107,7 @@ class App {
     if (!data._embedded) {
       document.getElementById('noEventText').classList.remove('hidden');
     } else {
-      for (var i = 0; i < data._embedded.events.length; i++) {
+      for (var i = 0; i < sortedArray.length; i++) {
         var newConcertRow = document.createElement("tr");
         var datesTd = document.createElement("td");
         var dates = data._embedded.events[i].dates.start.localDate.slice(5, 10);
