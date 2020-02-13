@@ -35,6 +35,11 @@ h2 {
   flex-direction: column;
 }
 
+.concertTableWrapper {
+  height: 200px;
+  overflow: auto;
+}
+
 #map {
   height: 500px;
   width: 50%;
@@ -81,7 +86,19 @@ footer {
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
-
+    .container {
+      height: 100%;
+      display: block;
+      overflow: auto;
+    }
+    footer {
+      
+      font-size: 1rem;
+    }
+    #map {
+      height: 200px;
+      width: 275px;
+    }
 }
 
 /* Portrait */
@@ -99,7 +116,10 @@ footer {
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-
+    #map {
+      height: 250px;
+      width: 440px;
+    }
 }
 
 /* ----------- iPad 3, 4 and Pro 9.7" ----------- */
