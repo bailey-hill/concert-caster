@@ -70,7 +70,11 @@ class App {
       center: coord,
       zoom: 13
     });
-  }
+    var marker = new google.maps.Marker({
+      position: coord,
+      map: map
+  })
+}
   handleGetEventError(error) {
     console.error(error)
   }
