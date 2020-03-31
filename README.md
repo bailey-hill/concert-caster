@@ -21,7 +21,7 @@ Try the application live at http://concert-caster.baileyohill.com/
 - User can view concerts, weather forecast, and map in her specified zip code.
 
 ### Preview
-![alt text](images\concert-caster.gif)
+![alt text](./images\concert-caster.gif)
 
 ## Development
 ### Getting Started
