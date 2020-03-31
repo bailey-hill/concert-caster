@@ -19,3 +19,13 @@ Try the application live at http://concert-caster.baileyohill.com/
 - User can view a map from google maps.
 - User can provide a zip code.
 - User can view concerts, weather forecast, and map in her specified zip code.
+
+### Preview
+![alt text](images\concert-caster.gif)
+
+## Development
+### Getting Started
+1. Clone the repository.
+
+`git clone https://github.com/bailey-hill/concert-caster
+cd sgt-react`
