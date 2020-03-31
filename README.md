@@ -1,8 +1,8 @@
 # concert-caster
 
-A weather forecasting app for concert goers who want to plan their trips.
+A weather forecasting app for concert-goers who want to plan their trips.
 
-### Technologies used
+## Technologies used
 - AJAX
 - APIs
 - JavaScript
@@ -26,7 +26,7 @@ Try the application live at http://concert-caster.baileyohill.com/
 ## Development
 ### Getting Started
 1. Clone the repository.
-`git clone https://github.com/bailey-hill/concert-caster
-cd sgt-react`
+  - `git clone https://github.com/bailey-hill/concert-caster`
+  - `cd sgt-react`
 
 2. Start the project. Open index.html in your browser.
