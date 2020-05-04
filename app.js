@@ -42,7 +42,7 @@ class App {
     }
   }
   getWeather(zipCode) {
-    const key = "d8c2bb12af67678ecbbb1c4e8977df25"
+    const key = "7aa10b35985cc142cfa865274b18c0cb"
     $.ajax({
       url: `http://api.openweathermap.org/data/2.5/forecast?zip=` + zipCode + `&units=imperial&appid=${key}`,
       success: this.handleGetWeatherSuccess,
