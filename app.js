@@ -57,9 +57,10 @@ class App {
     return this.coord;
   }
   getLocation(zipCode) {
+    const key = "AIzaSyA_I-JMuk7e9ZFjzIjtX5ax2UnGopLEXJk"
     $.ajax({
       type: "GET",
-      url: "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + zipCode + "|country:US&key=AIzaSyA_I-JMuk7e9ZFjzIjtX5ax2UnGopLEXJk",
+      url: `https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:` + zipCode + `|country:US&key=${key}`,
       async: true,
       success: this.handleGetLocationSuccess,
       error: this.handleGetLocationError
@@ -139,8 +140,9 @@ class App {
     })
   }
   startMap() {
+    const key = "AIzaSyA_I-JMuk7e9ZFjzIjtX5ax2UnGopLEXJk"
     var script = document.createElement('script');
-    script.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA_I-JMuk7e9ZFjzIjtX5ax2UnGopLEXJk');
+    script.setAttribute('src', `https://maps.googleapis.com/maps/api/js?key=${key}`);
     document.querySelector('body').appendChild(script);
     navigator.geolocation.getCurrentPosition((coord) => {
       var coords = { lat: coord.coords.latitude, lng: coord.coords.longitude }
