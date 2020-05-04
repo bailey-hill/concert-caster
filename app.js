@@ -42,8 +42,9 @@ class App {
     }
   }
   getWeather(zipCode) {
+    const key = "d8c2bb12af67678ecbbb1c4e8977df25"
     $.ajax({
-      url: "http://api.openweathermap.org/data/2.5/forecast?zip=" + zipCode + "&units=imperial&appid=d8c2bb12af67678ecbbb1c4e8977df25",
+      url: `http://api.openweathermap.org/data/2.5/forecast?zip=` + zipCode + `&units=imperial&appid=${key}`,
       success: this.handleGetWeatherSuccess,
       error: this.handleGetWeatherError
     })
@@ -132,9 +133,10 @@ class App {
     }
   }
   ticketmasterEvent(zipCode) {
+    const key = "7elxdku9GGG5k8j0Xm8KWdANDgecHMV0"
     $.ajax({
       type: "GET",
-      url: "https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=" + zipCode + "&apikey=7elxdku9GGG5k8j0Xm8KWdANDgecHMV0",
+      url: `https://app.ticketmaster.com/discovery/v2/events.json?classificationGenre=Fairs&Festivals&postalCode=` + zipCode + `&apikey=${key}`,
       success: this.handleGetEventSuccess,
       error: this.handleGetEventError
     })
